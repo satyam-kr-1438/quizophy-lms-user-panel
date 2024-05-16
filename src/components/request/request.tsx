@@ -1,28 +1,28 @@
 import axios from "axios";
-let API_URL="http://localhost:5001/api/user/user"
-let QUIZ_URL="http://localhost:5003/api/quiz/quiz"
-let COMMON_URL="http://localhost:5000/api/common"
-let QUESTION_URL="http://localhost:5002/api/question"
-export const APIURLADMIN="http://localhost:5006/api/conferenceQuiz/web/admin-setting"
-export const PACKAGE_URL="http://localhost:5007/api/package/package"
-export const BUNDLE_PACKAGE_URL="http://localhost:5007/api/package/bundle"
-export const PAYMENT_GATEWAY_CREDENTIALS_API_KEY="http://localhost:5006/api/conferenceQuiz/quiz/payment-gateway"
-export const PAYMENT_API_KEY="http://localhost:5007/api/package/payment"
-export const EXAM_API_KEY="http://localhost:5007/api/package/exam"
+// let API_URL="http://localhost:5001/api/user/user"
+// let QUIZ_URL="http://localhost:5003/api/quiz/quiz"
+// let COMMON_URL="http://localhost:5000/api/common"
+// let QUESTION_URL="http://localhost:5002/api/question"
+// export const APIURLADMIN="http://localhost:5006/api/conferenceQuiz/web/admin-setting"
+// export const PACKAGE_URL="http://localhost:5007/api/package/package"
+// export const BUNDLE_PACKAGE_URL="http://localhost:5007/api/package/bundle"
+// export const PAYMENT_GATEWAY_CREDENTIALS_API_KEY="http://localhost:5006/api/conferenceQuiz/quiz/payment-gateway"
+// export const PAYMENT_API_KEY="http://localhost:5007/api/package/payment"
+// export const EXAM_API_KEY="http://localhost:5007/api/package/exam"
 
 
 
 
-// let API_URL="https://quiz.quizophy.com/api/user/user"
-// let QUIZ_URL="https://quiz.quizophy.com/api/quiz/quiz"
-// let COMMON_URL="https://quiz.quizophy.com/api/common"
-// let QUESTION_URL="https://quiz.quizophy.com/api/question"
-// export const APIURLADMIN="https://quiz.quizophy.com/api/conferenceQuiz/web/admin-setting"
-// export const PACKAGE_URL="https://quiz.quizophy.com/api/package/package"
-// export const BUNDLE_PACKAGE_URL="https://quiz.quizophy.com/api/package/bundle"
-// export const PAYMENT_GATEWAY_CREDENTIALS_API_KEY="https://quiz.quizophy.com/api/conferenceQuiz/quiz/payment-gateway"
-// export const PAYMENT_API_KEY="https://quiz.quizophy.com/api/package/payment"
-// export const EXAM_API_KEY="https://quiz.quizophy.com/api/package/exam"
+let API_URL="https://quiz.quizophy.com/api/user/user"
+let QUIZ_URL="https://quiz.quizophy.com/api/quiz/quiz"
+let COMMON_URL="https://quiz.quizophy.com/api/common"
+let QUESTION_URL="https://quiz.quizophy.com/api/question"
+export const APIURLADMIN="https://quiz.quizophy.com/api/conferenceQuiz/web/admin-setting"
+export const PACKAGE_URL="https://quiz.quizophy.com/api/package/package"
+export const BUNDLE_PACKAGE_URL="https://quiz.quizophy.com/api/package/bundle"
+export const PAYMENT_GATEWAY_CREDENTIALS_API_KEY="https://quiz.quizophy.com/api/conferenceQuiz/quiz/payment-gateway"
+export const PAYMENT_API_KEY="https://quiz.quizophy.com/api/package/payment"
+export const EXAM_API_KEY="https://quiz.quizophy.com/api/package/exam"
 
 
 import { EmailVerificationOTPSentDTO, EmailVerificationOTPVerifiedDTO, QuizResultTypeDTO, RegisterOrLoginOtpSend, RegisterOrLoginOtpVerify } from "./request.dto";

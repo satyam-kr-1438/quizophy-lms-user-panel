@@ -6,6 +6,7 @@ export default class Quizophy extends Document {
       <Html lang="en">
         <Head>
           <link rel="shortcut icon" href="/img/favicon.png" type="image/png" />
+          <link rel="manifest" href="/public/manifest.json" />
         </Head>
 
         <body>

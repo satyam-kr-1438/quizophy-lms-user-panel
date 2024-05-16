@@ -95,11 +95,82 @@ function MyApp({ Component, pageProps }: AppProps) {
      },2000)
   },[])
 
+  useEffect(() => {
+    if ('serviceWorker' in navigator && 'SyncManager' in window) {
+      navigator.serviceWorker.ready.then((registration:any) => {
+        registration.sync.register('database-sync')
+          .then(() => console.log('Background sync registered successfully.'))
+          .catch((error:any) => console.error('Background sync registration failed:', error));
+      });
+    }
+  }, []);
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then(registration => {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, err => {
+          console.error('ServiceWorker registration failed: ', err);
+        });
+      });
+    }
+  }, []);
+  useEffect(() => {
+    const registerPeriodicSync = async () => {
+      try {
+        // Check if the browser supports navigator.permissions and navigator.serviceWorker
+        if ('permissions' in navigator && 'serviceWorker' in navigator) {
+          // Query for the permission
+          const periodicSyncPermission = await (navigator as any)?.permissions?.query({
+            name: 'periodic-background-sync'
+          });
+  
+          // Check if permission is granted
+          if (periodicSyncPermission.state === 'granted') {
+            // Get the service worker registration
+            const registration = await (navigator as any)?.serviceWorker?.ready;
+            
+            // Register the periodic sync
+            await registration?.periodicSync?.register('fetch-new-content', {
+              minInterval: 24 * 60 * 60 * 1000 // Set sync interval to once a day
+            });
+          }
+        }
+      } catch (error) {
+        console.error('Error registering periodic background sync:', error);
+      }
+    };
+  
+    registerPeriodicSync();
+  }, []);
+
   return (
     <Fragment>
       <Head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#fff" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
+        <meta name="apple-mobile-web-app-capable" content="yes"/>
+        <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+        <title>Quizophy Learning Management System</title>
+        {typeof navigator !== 'undefined' && 'serviceWorker' in navigator && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                if (typeof navigator.serviceWorker !== 'undefined') {
+                  navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                      console.log('Service Worker registration successful:', registration);
+                    })
+                    .catch(error => {
+                      console.error('Service Worker registration failed:', error);
+                    });
+                }
+              `,
+            }}
+          />
+        )}
         <title>Create A Quiz | Quiz Maker | Make Polls & Survey</title>
         <meta name="description" content="Quizophy is the Best live quiz platform that will elevate your online event experience. An Intuitive, Highly Engaging & Customized Quizzes, Polling Platform" key="desc" />
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>

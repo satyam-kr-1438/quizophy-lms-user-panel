@@ -31,6 +31,7 @@
     "itooltip": "^1.1.1",
     "jspdf": "^2.5.1",
     "next": "^13.2.3",
+    "next-pwa": "^5.6.0",
     "plyr-react": "^5.2.0",
     "progressbar.js": "^1.1.0",
     "react": "18.2.0",
