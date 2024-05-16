@@ -16,8 +16,6 @@
     "incremental": true,
     "baseUrl": "./src"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/lib/headhesive.js", "src/components/common/searchComponent/SelectCityAndState.js", "src/components/common/profile/SelectStateAndCity.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/lib/headhesive.js", "src/components/blocks/navbar/TransactionHistoryTable.jsx", "src/components/blocks/navbar/GenerateInvoicePDF.jsx", "src/components/common/SlideToContinue.js", "src/components/dashboardComponent/common/InvoicePDF.js", "src/components/dashboardComponent/common/paymentGateway/CashFree.jsx"],
   "exclude": ["node_modules"]
 }
-
-

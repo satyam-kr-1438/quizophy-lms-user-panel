@@ -1,11 +1,11 @@
 {
-  "name": "User Consultant",
-  "short_name": "User Consultant",
+  "name": "Quizophy",
+  "short_name": "quizophy",
   "theme_color": "#2196f3",
   "background_color": "#2196f3",
   "display": "standalone",
   "description": "um is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more r",
-  "id": "spg_web_pwa",
+  "id": "quizophy_web_lms_pwa",
   "scope": "/",
   "start_url": "/",
   "dir": "ltr",
@@ -498,11 +498,11 @@
   ],
   "share_target": {
     "method": "GET",
-    "action": "/home",
+    "action": "/quizzes",
     "params": {
-      "title": "home",
-      "text": "home",
-      "url": "https://user.clcsikar.com/home",
+      "title": "quizzes",
+      "text": "quizzes",
+      "url": "https://lms.quizophy.com/quizzes",
       "files": [
         {
           "name": "lists",
@@ -513,20 +513,20 @@
   },
   "shortcuts": [
     {
-      "name": "Home",
-      "url": "/home",
-      "description": "my description"
+      "name": "Quizzes",
+      "url": "/",
+      "description": "my quizzes"
     },
     {
-      "name": "Appointments",
-      "url": "/appointments",
-      "description": "my description"
+      "name": "Packages",
+      "url": "/packages",
+      "description": "my packages"
     }
   ],
   "protocol_handlers": [
     {
       "protocol": "web+music",
-      "url": "/play?track=https://user.clcsikar.com"
+      "url": "/play?track=https://lms.quizophy.com"
     }
   ],
   "file_handlers": [
@@ -557,7 +557,7 @@
     "related_applications": [
       {
         "platform": "windows",
-        "url": "https://user.clcsikar.com",
+        "url": "https://lms.quizophy.com",
         "id": "example.ExampleApp"
       },
       {
@@ -567,7 +567,7 @@
     ],
       "web_apps": [
         {
-          "web_app_identity": "https://user.clcsikar.com/"
+          "web_app_identity": "https://lms.quizophy.com/"
         }
       ],
       "widgets": [

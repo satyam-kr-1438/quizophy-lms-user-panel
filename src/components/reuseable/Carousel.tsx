@@ -10,12 +10,16 @@ interface CarouselProps extends SwiperProps {
   slideClassName?: string;
   children: ReactElement[];
   slidesPerView?: number | 'auto';
+  autoplay?:any;
+  loop?:any;
 }
 // ==================================================================
 
 const Carousel: FC<CarouselProps> = ({
   children,
+  autoplay=true,
   slideClassName,
+  loop=true,
   spaceBetween = 30,
   slidesPerView = 3,
   pagination = true,
@@ -29,6 +33,8 @@ const Carousel: FC<CarouselProps> = ({
   return (
     <Fragment>
       <Swiper
+        autoplay={autoplay}
+        loop={loop}
         spaceBetween={spaceBetween}
         slidesPerView={slidesPerView}
         modules={[Pagination, Navigation, Autoplay]}
