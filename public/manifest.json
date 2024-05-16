@@ -11,6 +11,18 @@
   "theme_color": "#2f7def",
   "icons": [
     {
+      "src": "maskable.png",
+      "type": "image/png",
+      "sizes": "196x196",
+      "purpose":"maskable"
+    },
+    {
+      "src": "maskable.png",
+      "type": "image/png",
+      "sizes": "196x196",
+      "purpose":"any"
+    },
+    {
       "src": "windows11/SmallTile.scale-100.png",
       "sizes": "71x71"
     },
@@ -466,6 +478,9 @@
   ],
   "iarc_rating_id": "12",
   "prefer_related_applications": true,
+  "edge_side_panel": {
+    "preferred_width": 420
+  },
   "related_applications": [
     {
       "platform": "windows",
@@ -474,9 +489,28 @@
     },
     {
       "platform": "windows",
-      "url": "https://play.quizophy.com"
+      "url": "https://live.quizophy.com"
     }
   ],
+  "file_handlers": [
+    {
+      "action": "/open-img",
+      "accept": {
+        "image/png": [".png"]
+      },
+      "icons": [
+        {
+          "src": "/public/windows11/Square44x44Logo.altform-unplated_targetsize-256.png",
+          "sizes": "256x256",
+          "type": "image/png"
+        }
+      ],
+      "launch_type": "single-client"
+    }
+  ],
+  "launch_handler": {
+    "client_mode": ["navigate-existing", "auto"]
+  },
   "shortcuts": [
     {
       "name": "Quizzes",
@@ -494,10 +528,68 @@
       "description": "Home"
     }
   ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+music",
+      "url": "/play?track=https://lms.quizophy.com"
+    }
+  ],
+  "handle_links": "preferred",
+  "share_target": {
+    "method": "GET",
+    "action": "/dashboard/quizzes",
+    "params": {
+      "title": "home",
+      "text": "home",
+      "url": "https://lms.quizophy.com/dashboard/quizzes",
+      "files": [
+        {
+          "name": "lists",
+          "accept": ["text/csv", ".csv"]
+        }
+      ]
+    }
+  },
+  "scope_extensions": [
+    {"origin": "*.pwabuilder.com"},
+    {"origin": "docs.pwabuilder.co.uk"},
+    {"origin": "*.pwabuilder.co.uk"}
+  ],
   "categories": [
     "business",
     "education",
     "entertainment",
     "finance"
+  ],
+  "web_apps": [
+    {
+      "web_app_identity": "https://lms.quizophy.com/"
+    }
+  ],
+  "widgets": [
+    {
+      "name": "PWAmp mini player",
+      "description": "widget to control the PWAmp music player",
+      "tag": "pwamp",
+      "template": "pwamp-template",
+      "ms_ac_template": "widgets/mini-player-template.json",
+      "data": "widgets/mini-player-data.json",
+      "type": "application/json",
+      "screenshots": [
+        {
+          "src": "logo192.png",
+          "sizes": "192x192",
+          "label": "The PWAmp mini-player widget"
+        }
+      ],
+      "icons": [
+        {
+          "src": "logo192.png",
+          "sizes": "192x192"
+        }
+      ],
+      "auth": false,
+      "update": 86400
+    }
   ]
 }
