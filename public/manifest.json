@@ -1,33 +1,15 @@
 {
-  "name": "Quizophy",
-  "short_name": "quizophy",
-  "theme_color": "#2196f3",
-  "background_color": "#2196f3",
-  "display": "standalone",
-  "description": "um is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more r",
-  "id": "quizophy_web_lms_pwa",
-  "scope": "/",
-  "start_url": "/",
+  "background_color": "#337ae9",
+  "description": "Quizophy is the Best live quiz platform that will elevate your online event experience...",
   "dir": "ltr",
+  "display": "standalone",
+  "name": "quizophy",
   "orientation": "portrait",
-  "display_override": [
-    "window-controls-overlay"
-  ],
-  "lang": "en",
- 
+  "scope": "/",
+  "short_name": "quizophy",
+  "start_url": "/",
+  "theme_color": "#2f7def",
   "icons": [
-     {
-          "src": "maskable.png",
-          "type": "image/png",
-          "sizes": "196x196",
-          "purpose":"maskable"
-    },
-    {
-      "src": "maskable.png",
-      "type": "image/png",
-      "sizes": "196x196",
-      "purpose":"any"
-    },
     {
       "src": "windows11/SmallTile.scale-100.png",
       "sizes": "71x71"
@@ -477,124 +459,45 @@
       "sizes": "1024x1024"
     }
   ],
-  "categories": [
-    "business",
-    "education",
-    "finance",
-    "lifestyle"
+  "id": "quizophy_pwa_lms_web",
+  "lang": "en",
+  "display_override": [
+    "window-controls-overlay"
   ],
   "iarc_rating_id": "12",
   "prefer_related_applications": true,
-  "edge_side_panel": {
-    "preferred_width": 420
-  },
-  "screenshots" : [
+  "related_applications": [
     {
-      "src": "logo192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "platform": "wide"
+      "platform": "windows",
+      "url": "https://lms.quizophy.com",
+      "id": "example.ExampleApp"
+    },
+    {
+      "platform": "windows",
+      "url": "https://play.quizophy.com"
     }
   ],
-  "share_target": {
-    "method": "GET",
-    "action": "/quizzes",
-    "params": {
-      "title": "quizzes",
-      "text": "quizzes",
-      "url": "https://lms.quizophy.com/quizzes",
-      "files": [
-        {
-          "name": "lists",
-          "accept": ["text/csv", ".csv"]
-        }
-      ]
-    }
-  },
   "shortcuts": [
     {
       "name": "Quizzes",
       "url": "/",
-      "description": "my quizzes"
+      "description": "Quizzes"
     },
     {
       "name": "Packages",
       "url": "/packages",
-      "description": "my packages"
-    }
-  ],
-  "protocol_handlers": [
-    {
-      "protocol": "web+music",
-      "url": "/play?track=https://lms.quizophy.com"
-    }
-  ],
-  "file_handlers": [
-    {
-      "action": "/open-img",
-      "accept": {
-        "image/png": [".png"]
-      },
-      "icons": [
-        {
-          "src": "logo256.png",
-          "sizes": "256x256",
-          "type": "image/png"
-        }
-      ],
-      "launch_type": "single-client"
-    }
-  ],
-   "launch_handler": {
-      "client_mode": ["navigate-existing", "auto"]
+      "description": "Packages"
     },
-    "handle_links": "preferred",
-    "scope_extensions": [
-      {"origin": "*.pwabuilder.com"},
-      {"origin": "docs.pwabuilder.co.uk"},
-      {"origin": "*.pwabuilder.co.uk"}
-    ],
-    "related_applications": [
-      {
-        "platform": "windows",
-        "url": "https://lms.quizophy.com",
-        "id": "example.ExampleApp"
-      },
-      {
-        "platform": "windows",
-        "url": "https://consultant.clcsikar.com"
-      }
-    ],
-      "web_apps": [
-        {
-          "web_app_identity": "https://lms.quizophy.com/"
-        }
-      ],
-      "widgets": [
-        {
-          "name": "PWAmp mini player",
-          "description": "widget to control the PWAmp music player",
-          "tag": "pwamp",
-          "template": "pwamp-template",
-          "ms_ac_template": "widgets/mini-player-template.json",
-          "data": "widgets/mini-player-data.json",
-          "type": "application/json",
-          "screenshots": [
-            {
-              "src": "logo192.png",
-              "sizes": "192x192",
-              "label": "The PWAmp mini-player widget"
-            }
-          ],
-          "icons": [
-            {
-              "src": "logo192.png",
-              "sizes": "192x192"
-            }
-          ],
-          "auth": false,
-          "update": 86400
-        }
-      ]
-
+    {
+      "name": "Home",
+      "url": "/",
+      "description": "Home"
+    }
+  ],
+  "categories": [
+    "business",
+    "education",
+    "entertainment",
+    "finance"
+  ]
 }
