@@ -1,16 +1,16 @@
-@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@1,300;1,400;1,500;1,600;1,700");
 @import "../../fonts/space/space.css";
 * {
   word-spacing: normal !important;
 }
 
 body {
-  font-family: 'Lexend Deca', sans-serif !important;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 0.85rem;
 }
 
 em {
-  font-family: 'Lexend Deca', sans-serif !important;
+  font-family: "IBM Plex Serif", serif;
 }
 
 body,

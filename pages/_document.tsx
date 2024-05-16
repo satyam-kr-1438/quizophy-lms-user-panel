@@ -1,14 +1,12 @@
 import Document, { DocumentContext, Head, Html, Main, NextScript } from 'next/document';
 
-export default class Quizophy extends Document {
+export default class SandBox extends Document {
   render() {
     return (
       <Html lang="en">
         <Head>
-          <link rel="shortcut icon" href="/public/favicon.ico" type="image/png" />
-          <link rel="apple-touch-icon" href="/public/apple-touch-icon.png"/>
-
-          <link rel="manifest" href="/public/manifest.json" />
+          <link rel="manifest" href="/manifest.json" />
+          {/* <link rel="shortcut icon" href="/img/favicon.png" type="image/png" /> */}
         </Head>
 
         <body>
@@ -22,7 +20,7 @@ export default class Quizophy extends Document {
 
 // ======================================================================
 
-Quizophy.getInitialProps = async (ctx: DocumentContext) => {
+SandBox.getInitialProps = async (ctx: DocumentContext) => {
   const originalRenderPage = ctx.renderPage;
 
   // Run the React rendering logic synchronously

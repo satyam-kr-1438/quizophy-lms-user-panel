@@ -2,9 +2,11 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import type { AppProps } from 'next/app';
 import { Fragment, useEffect, useState } from 'react';
-import ThemeProvider from 'theme/ThemeProvider';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 // animate css
+import ProgressBar from 'nextjs-progressbar';
+// import {registerBackgroundSync} from "../src/components/backgroundSync/background-sync.js"
 import 'animate.css';
 // import swiper css
 import 'swiper/css';
@@ -12,89 +14,46 @@ import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/thumbs';
+
 // video player css
 import 'plyr-react/plyr.css';
 // glightbox css
 import 'glightbox/dist/css/glightbox.css';
 // custom scrollcue css
-import 'plugins/scrollcue/scrollCue.css';
 // Bootstrap and custom scss
-// import 'assets/scss/style.scss';
-import "/public/css/style.css"
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import useAuthorization from 'hooks/useAuthorization';
-import Loading from 'components/dashboardComponent/common/loadingPart/Loading';
-import { getAuthenticatedUserData, removeAuthenticationDataHandleLogout, setAuthenticationData } from 'hooks/localStorageInfo';
-import { checkUserRegisteredOrNot, getActivePackagesAndPassesDetails } from 'components/request/request';
-import { SuccessMessage } from 'components/dashboardComponent/common/messageToast/AlertMessageToast';
-import { Provider } from 'react-redux';
-import { store } from 'store';
-import GetAllActivePackagesAndPasses from 'components/dashboardComponent/common/GetAllActivePackagesAndPasses';
-let pathNameArr=["dashboard","blog"]
+import 'assets/scss/style.scss';
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { IoWalletOutline } from "react-icons/io5";
+import "../public/css/style.css"
+import Footer from 'components/layouts/Footer';
+import ProfileNavigation from 'components/layouts/ProfileNavigation';
+import ProfilePage from 'components/common/profile/ProfilePage';
+let pathNameArr=["/home"]
+let pathNameArrFooter=["/home","/home-2","/favourite-consultant","/appointments","/setting"]
+
 function MyApp({ Component, pageProps }: AppProps) {
   const { pathname } = useRouter();
-  // const dispatch:any=useDispatch()
-  const [loading, setLoading] = useState(true);
-  const [auth,setAuth]=useAuthorization()
   const router=useRouter()
+  const [loading, setLoading] = useState(true);
+  const [auth,setAuth]=useState(true)
+ const [openSidebar,setOpenSideBar]=useState(false)
   // added bootstrap functionality
   useEffect(() => {
     if (typeof window !== 'undefined') import('bootstrap');
   }, []);
-
-  // scroll animation added
-  useEffect(() => {
-    (async () => {
-      const scrollCue = (await import('plugins/scrollcue')).default;
-      scrollCue.init({ interval: -400, duration: 700, percentage: 0.8 });
-      scrollCue.update();
-    })();
-  }, [pathname]);
-
   useEffect(()=>{
-     let getAuth=localStorage.getItem("quizophyAuthenticatedUserDetail")
-     if(getAuth){
-      getAuth=JSON.parse(getAuth)
-     }
-     if(!getAuth){
-      if(typeof window!="undefined" && pathNameArr?.includes(window.location.pathname.split("/")[1]) && window.location.pathname.split("/")[1]!=="blog"){
-        router.push("/")
-      }
-     }else{
-      if(typeof window!="undefined" && !pathNameArr?.includes(window.location.pathname.split("/")[1])){
-        router.push("/dashboard/quizzes")
-      }
-     }
-  })
-
-  const checkUserRegisteredOrNotStatus=async ()=>{
-    try{
-      let getAuth=getAuthenticatedUserData()
-      if(getAuth){
-        const {data}=await checkUserRegisteredOrNot((getAuth)?.id)
-        if(!data?.success){
-            let dataItem=removeAuthenticationDataHandleLogout()
-            if(dataItem){
-              SuccessMessage("User Logout Successfully")
-              router.push("/")
-            }
-        }
-      }
-    }catch(err){
-
-    }
-    
-  }
-
-
-  useEffect(()=>{
-     checkUserRegisteredOrNotStatus()
-     setTimeout(()=>{
-      setLoading(false)
-     },2000)
+    AOS.init({
+      duration: 300,
+      easing: 'ease-in-out',
+      once: true, // Whether animation should happen only once
+    });
   },[])
 
+  // scroll animation added
+
+
+  // manage loading status
+  useEffect(() => setLoading(false), []);
   useEffect(() => {
     if ('serviceWorker' in navigator && 'SyncManager' in window) {
       navigator.serviceWorker.ready.then((registration:any) => {
@@ -143,7 +102,25 @@ function MyApp({ Component, pageProps }: AppProps) {
   
     registerPeriodicSync();
   }, []);
+  
+  // useEffect(() => {
+  //   registerBackgroundSync();
+  // }, []);
 
+
+//   useEffect(() => {
+//     const preventZoom = (event:any) => {
+//         if (event.scale !== 1) {
+//             event.preventDefault();
+//         }
+//     };
+
+//     document.addEventListener('touchmove', preventZoom, { passive: false });
+
+//     return () => {
+//         document.removeEventListener('touchmove', preventZoom);
+//     };
+// }, []);
   return (
     <Fragment>
       <Head>
@@ -153,7 +130,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"/>
         <meta name="apple-mobile-web-app-capable" content="yes"/>
         <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
-        <title>Quizophy Learning Management System</title>
+        <title>Event Consultant</title>
         {typeof navigator !== 'undefined' && 'serviceWorker' in navigator && (
           <script
             dangerouslySetInnerHTML={{
@@ -171,23 +148,43 @@ function MyApp({ Component, pageProps }: AppProps) {
             }}
           />
         )}
-        <title>Create A Quiz | Quiz Maker | Make Polls & Survey</title>
-        <meta name="description" content="Quizophy is the Best live quiz platform that will elevate your online event experience. An Intuitive, Highly Engaging & Customized Quizzes, Polling Platform" key="desc" />
-        <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100;200;300;400;500;600;700;800;900&family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-
       </Head>
 
-      <ThemeProvider>
+      <div style={{maxWidth:"420px",minHeight:"100vh",maxHeight:`${openSidebar?"100vh":""}`,overflow:`${openSidebar?"hidden":"hidden"}`,margin:"auto",background:`${openSidebar?"rgba(0, 0, 0, 0.5)":"#f5f5f5"}`,opacity:`${openSidebar?"225ms cubic-bezier(0.4, 0, 0.2, 1) 0ms":""}`}}>
+        {openSidebar && <div className={openSidebar?"sidebar_nvigation_festro":"sidebar_nvigation_festro_close"}>
+                  <ProfileNavigation text="" setOpenSideBar={setOpenSideBar}/>
+                  <ProfilePage setOpenSideBar={setOpenSideBar}/>
+          </div>}
         {/* <div className="page-loader" /> */}
-        {loading ? <div>
-            <Loading/>
-        </div> : <Provider store={store}>
-                        <GetAllActivePackagesAndPasses>
-                            <Component {...pageProps} />
-                        </GetAllActivePackagesAndPasses>
-                 </Provider>}
-      </ThemeProvider>
-      <ToastContainer/>
+        {loading ? <div className="page-loader" /> :  auth ? 
+        <>
+          {pathNameArr?.includes(window.location.pathname) && <div className={`${window.location.pathname=="/home"?"navbar-design-festro":""}`}>
+           
+            <div className="" style={{justifyContent:"space-between",display:"flex",alignItems:"center"}}>
+               {<button  className="offcanvas-nav-btn" style={{border:"none",outline:"none",background:"none"}} onClick={()=>{
+                  if(openSidebar)
+                     setOpenSideBar(false)
+                  else
+                     setOpenSideBar(true)
+                }}>
+                  <img src="/img/festro/drawer-icon.3dd24632.svg" style={{width:"22px"}} alt="close" className="style_img__26PED"/>
+                </button>}
+            </div>
+              <div>
+                <IoWalletOutline className="notification_icon"  onClick={()=>{
+                  router.push("/wallet")
+                }}/>
+                <IoIosNotificationsOutline className="notification_icon2" style={{marginLeft:"30px"}} onClick={()=>{
+                  router.push("/notifications")
+                }}/>
+              </div>
+               
+            </div>
+          }
+               <Component {...pageProps} />
+          {pathNameArrFooter?.includes(window.location.pathname) && <Footer/>}
+        </>:""}
+      </div>
     </Fragment>
   );
 }
